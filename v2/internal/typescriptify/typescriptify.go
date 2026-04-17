@@ -46,6 +46,7 @@ var jsVariableUnsafeChars = regexp.MustCompile(`[^A-Za-z0-9_]`)
 
 func nameTypeOf(typeOf reflect.Type) string {
 	tname := typeOf.Name()
+	tname = strings.ReplaceAll(tname, "*", "")
 	gidx := strings.IndexRune(tname, '[')
 	if gidx > 0 { // its a generic type
 		rem := strings.SplitN(tname, "[", 2)
